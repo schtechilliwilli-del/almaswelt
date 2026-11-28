@@ -1,7 +1,7 @@
 import re
 b=open('base.html').read()
 css=open('new.css').read()
-js=open('new1.js').read()+"\n"+open('new2.js').read()
+js=open('new1.js').read()+"\n"+open('new2.js').read()+"\n"+open('pwa.js').read()
 b=b.replace('</style>',css+'</style>',1)
 # Farben
 old=b[b.index("var COLORS = ["):b.index("var color = COLORS[7][1];")]
