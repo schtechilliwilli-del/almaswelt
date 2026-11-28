@@ -1,6 +1,6 @@
 // Service Worker für Almas Welt: macht die Seite offlinefähig.
 // Bei Änderungen an der Seite die Versionsnummer erhöhen.
-const VERSION = 'almaswelt-v1';
+const VERSION = 'almaswelt-v2';
 const SHELL = [
   './',
   './index.html',

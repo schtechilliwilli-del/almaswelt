@@ -1,0 +1,14 @@
+
+/* ===== Ausmalen: grosses Bild mit Pfeilen ===== */
+#paint{gap:8px;padding:0 8px 10px}
+#paint #picker{display:none}
+#paint #stage{width:100%}
+.navb{position:absolute;top:50%;width:clamp(52px,9vw,84px);height:clamp(52px,9vw,84px);margin-top:calc(clamp(52px,9vw,84px) / -2);border-radius:50%;background:rgba(255,255,255,.93);box-shadow:0 3px 14px rgba(0,0,0,.22);display:grid;place-items:center;z-index:4;color:var(--ink)}
+.navb svg{width:56%;height:56%}
+.navb.l{left:4px}.navb.r{right:4px}
+.navb:active{transform:scale(.92)}
+#paint .tools{gap:8px 16px}
+#paint .mode{font-size:clamp(18px,2.4dvh,24px);padding:6px 16px 6px 12px}
+#paint .palette{gap:8px}
+#paint .sw{width:clamp(38px,10.5vw,64px);height:clamp(38px,10.5vw,64px);border-width:4px}
+#acts{display:flex;gap:10px}
