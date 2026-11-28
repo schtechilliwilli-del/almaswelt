@@ -12,3 +12,5 @@
 #paint .palette{gap:8px}
 #paint .sw{width:clamp(38px,10.5vw,64px);height:clamp(38px,10.5vw,64px);border-width:4px}
 #acts{display:flex;gap:10px}
+.r[data-bg]{stroke:none}
+.ol[data-bg]{display:none}

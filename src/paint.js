@@ -4,6 +4,14 @@ var stage = document.getElementById('stage'), picker = document.getElementById('
 if (!stage || !pic || !tools || typeof PIC_ORDER === 'undefined' || typeof drawPic !== 'function') return;
 if (picker) picker.style.display = 'none';
 var NS = 'http://www.w3.org/2000/svg';
+var baseDraw = drawPic;
+drawPic = function(n){
+  baseDraw(n);
+  var r = document.createElementNS(NS, 'rect');
+  r.setAttribute('class', 'r'); r.setAttribute('data-bg', '1');
+  r.setAttribute('x', -1000); r.setAttribute('y', -1000); r.setAttribute('width', 2400); r.setAttribute('height', 2400);
+  pic.insertBefore(r, pic.firstChild);
+};
 function go(d){
   var i = PIC_ORDER.indexOf(picName), n = PIC_ORDER[(i + d + PIC_ORDER.length) % PIC_ORDER.length];
   drawPic(n); say(PIC_SAY[n] || n);
@@ -26,7 +34,7 @@ function paintBlob(cb){
   if (!defs){ defs = document.createElementNS(NS, 'defs'); svg.insertBefore(defs, svg.firstChild); }
   document.querySelectorAll('svg[width="0"] pattern').forEach(function(p){ defs.appendChild(p.cloneNode(true)); });
   var st = document.createElementNS(NS, 'style');
-  st.textContent = '.r{fill:#fff;stroke:#4a2d5c;stroke-width:9;stroke-linejoin:round;stroke-linecap:round}.line{fill:none;stroke:#4a2d5c;stroke-width:9;stroke-linecap:round}.dot{fill:#4a2d5c}.ol{fill:none;stroke:#4a2d5c;stroke-width:9;stroke-linejoin:round}';
+  st.textContent = '.r{fill:#fff;stroke:#4a2d5c;stroke-width:9;stroke-linejoin:round;stroke-linecap:round}.line{fill:none;stroke:#4a2d5c;stroke-width:9;stroke-linecap:round}.dot{fill:#4a2d5c}.r[data-bg]{stroke:none}.ol[data-bg]{display:none}.ol{fill:none;stroke:#4a2d5c;stroke-width:9;stroke-linejoin:round}';
   var bg = document.createElementNS(NS, 'rect'); bg.setAttribute('width', 400); bg.setAttribute('height', 400); bg.setAttribute('fill', '#fff');
   svg.insertBefore(bg, svg.firstChild); svg.insertBefore(st, svg.firstChild);
   var img = new Image();
